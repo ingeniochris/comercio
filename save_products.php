@@ -23,7 +23,11 @@ function validar($nombre,$descripcion,$precio,$idProveedor,$uploadfile,$cantidad
    }
     $query = "INSERT INTO productos(nombre, descripcion,precio,idProveedor,img,cantidad) VALUES ('$nombre', '$descripcion', '$precio', '$idProveedor', '$filename', '$cantidad')";
     $resultQuery = mysqli_query($conn, $query);
- 
+    if (move_uploaded_file($tempname, $folder))  {
+        $msg = "Image uploaded successfully";
+    }else{
+        $msg = "Failed to upload image";
+    }
     if(!$resultQuery && move_uploaded_file($tempname, $folder)){
         die('Query failed');
         $_SESSION['message'] = 'No fue posible cargar la imagen';
@@ -31,7 +35,7 @@ function validar($nombre,$descripcion,$precio,$idProveedor,$uploadfile,$cantidad
     }
     $_SESSION['message'] = 'El producto se agrego con exito';
     $_SESSION['message_type'] = 'success';
-   return  header('Location: addProducts.php');
+   return  header('Location: products.php');
    
 }; 
 
