@@ -30,7 +30,7 @@
 
                         <th><button type="button" class="btn btn-outline-info" data-container="body"
                                 data-toggle="popover" data-placement="top"
-                                data-content="Creada el: <?php echo $row['created_at']?>">
+                                data-content="Creada el: <?php echo $row['current']?>">
                                 <?php echo $row['idProducto']?>
                             </button>
                         </th>
